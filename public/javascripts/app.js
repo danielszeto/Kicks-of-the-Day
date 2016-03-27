@@ -47,6 +47,7 @@ app.controller('HomeController', HomeController);
 		this.createShoe = createShoe;
 		this.updateShoe = updateShoe;
 		this.deleteShoe = deleteShoe;
+		this.incrementUpvotes = incrementUpvotes;
 
 	function updateShoe(shoe) {
 		console.log('updating');
@@ -57,6 +58,7 @@ app.controller('HomeController', HomeController);
 	 function createShoe(){
 	      Shoe.save(this.newShoe);
 	      this.shoes.push(this.newShoe);
+	      this.formContent = "";
 	      console.log('saved');
 	 }
 
@@ -65,6 +67,12 @@ app.controller('HomeController', HomeController);
     Shoe.remove({id:shoe._id});
     var shoesIndex = this.shoes.indexOf(shoe);
     this.shoes.splice(shoesIndex, 1);
+  }
+
+  function incrementUpvotes (shoe){
+    console.log('incrementing');
+     shoe.upvotes += 1;
+     console.log(shoe.upvotes);
   }
 
 }	
@@ -83,4 +91,3 @@ app.controller('MainCtrl', function($scope) {
     alert($scope.vote);
   };
 });
-

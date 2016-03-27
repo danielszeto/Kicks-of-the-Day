@@ -48,13 +48,15 @@
 
 
   <div class="shoeShow">
-     <ul ng-repeat="shoe in home.shoes">
+     <ul ng-repeat="shoe in home.shoes | orderBy: '-upvotes' ">
         <a class="shoeBrand" href="/books/{{shoe._id}}">{{shoe.brand}} </a>
         <!-- <div class="shoeBrand"> {{shoe.brand}}</div> -->
         <div class="shoeKind"> {{shoe.kind}} </div>
         <img src="{{shoe.image}}"> <br/><br/>
         <button class="btn btn-default" class='delete' ng-click="home.deleteShoe(shoe)">Delete</button>
         <button ng-click="home.displayEditForm = true" class="btn btn-default">Edit</button>
+        <br><br><br>
+        <button class="glyphicon glyphicon-thumbs-up" ng-click="home.incrementUpvotes(shoe)"></button> <div> {{shoe.upvotes}} </div>
 
         <form ng-show="home.displayEditForm" ng-submit="home.updateShoe(shoe)">
                 <div class="form-group">
@@ -69,6 +71,8 @@
        <hr>
       </ul>
       </div>
+
+
 
 
  

@@ -4,6 +4,7 @@ var ShoeSchema = new mongoose.Schema({
   brand: {type: String, required: true},
   kind: {type: String, required: true},
   image: {type: String},
+  upvotes: {type: Number, default: 0},
   createdAt: { type : Date, default: Date.now() }
 });
 
