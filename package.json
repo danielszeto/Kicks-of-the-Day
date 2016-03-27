@@ -1,0 +1,26 @@
+{
+  "name": "kicks_of_the_day",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielszeto/Kicks-of-the-Day.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielszeto/Kicks-of-the-Day/issues"
+  },
+  "homepage": "https://github.com/danielszeto/Kicks-of-the-Day#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "hbs": "^4.0.0",
+    "mongoose": "^4.4.10"
+  }
+}
