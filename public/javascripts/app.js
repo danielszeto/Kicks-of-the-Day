@@ -28,6 +28,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         templateUrl: "templates/about.html"
       	})
 
+       .state('show', {
+        url: "/shoes/:id",
+        controller: 'HomeController',
+        controllerAs: 'home',
+        templateUrl: "templates/shoeshow.html"
+      	})
+
       .state('contact', {
         url: "/contact",
         controller: 'HomeController',
@@ -58,7 +65,7 @@ app.controller('HomeController', HomeController);
 	 function createShoe(){
 	      Shoe.save(this.newShoe);
 	      this.shoes.push(this.newShoe);
-	      this.formContent = "";
+	      this.newShoe = {};
 	      console.log('saved');
 	 }
 
@@ -71,7 +78,9 @@ app.controller('HomeController', HomeController);
 
   function incrementUpvotes (shoe){
     console.log('incrementing');
+    console.log(shoe);
      shoe.upvotes += 1;
+     Shoe.update({id: shoe._id}, shoe);
      console.log(shoe.upvotes);
   }
 
@@ -83,11 +92,4 @@ app.service('Shoe', function($resource) {
       method: 'PUT' // this method issues a PUT request
     }
   });
-});
-
-app.controller('MainCtrl', function($scope) {
-  $scope.changeVote = function(vote, flag) {
-    $scope.vote = vote == flag ? 'None' : flag;
-    alert($scope.vote);
-  };
 });

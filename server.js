@@ -4,6 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Shoe = require('./models/shoe');
+    Comment = require('./models/Comments');
 // configure bodyParser (for receiving form data)
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -44,7 +45,8 @@ app.get('/api/shoes/:id', function (req, res) {
 // get todo id from url params (`req.params`)
   var shoeId = req.params.id;
 
-  // find todo in db by id
+
+  // find shoe in db by id
   Shoe.findOne({ _id: shoeId }, function (err, foundShoe) {
     if (err) {
       res.status(500).json({ error: err.message });
@@ -56,13 +58,14 @@ app.get('/api/shoes/:id', function (req, res) {
 
 });
 
-//update TODO
+//update Shoe
 app.put('/api/shoes/:id', function (req, res) {
     var id = req.params.id;
     Shoe.findById({_id: id}, function (err, foundShoe){
         if (err) console.log(err);
         foundShoe.brand = req.body.brand;
         foundShoe.kind = req.body.kind;
+        foundShoe.upvotes = req.body.upvotes;
         foundShoe.save(function (err, saved){
             if (err) { console.log(err);}
             res.json(saved);

@@ -46,15 +46,38 @@
   </div>
   </div>
 
+  <form class="add-shoe" ng-submit='home.createShoe()'>
+      <div>
+        <label for="shoe-brand">Brand:</label>
+        <input type="text" id="shoe-brand" ng-model="home.newShoe.brand" placeholder="brand">
+      </div>
+      <div>
+        <label for="newShoe-kind">Kind:</label>
+        <input type="text" id="newShoe-kind" ng-model="home.newShoe.kind" placeholder="description">
+      </div>
+      <div>
+        <label for="newShoe-image">Image:</label>
+        <input type="text" id="newShoe-image" ng-model="home.newShoe.image" placeholder="image URL">
+<!--         <input type="hidden" id="newShoe-image" ng-model="home.newShoe.image" role="uploadcare-uploader" data-crop="disabled" data-images-only="true" />
+      </div> -->
+ <!--         <div>
+        <label for="newTodo-done">Done:</label>
+        <input type="text" id="newTodo-done" ng-model="todos.newTodo.done" placeholder="done">
+      </div> -->
+      <div>
+        <input type="submit" value="Add Shoe">
+      </div>
+    </form>
+
 
   <div class="shoeShow">
      <ul ng-repeat="shoe in home.shoes | orderBy: '-upvotes' ">
-        <a class="shoeBrand" href="/books/{{shoe._id}}">{{shoe.brand}} </a>
+        <a class="shoeBrand" href="/shoes/{{shoe._id}}">{{shoe.brand}} </a>
         <!-- <div class="shoeBrand"> {{shoe.brand}}</div> -->
         <div class="shoeKind"> {{shoe.kind}} </div>
         <img src="{{shoe.image}}"> <br/><br/>
         <button class="btn btn-default" class='delete' ng-click="home.deleteShoe(shoe)">Delete</button>
-        <button ng-click="home.displayEditForm = true" class="btn btn-default">Edit</button>
+        <span ng-click="home.displayEditForm = true" class="btn btn-default">Edit</span>
         <br><br><br>
         <button class="glyphicon glyphicon-thumbs-up" ng-click="home.incrementUpvotes(shoe)"></button> <div> {{shoe.upvotes}} </div>
 

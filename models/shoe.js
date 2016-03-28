@@ -5,6 +5,7 @@ var ShoeSchema = new mongoose.Schema({
   kind: {type: String, required: true},
   image: {type: String},
   upvotes: {type: Number, default: 0},
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   createdAt: { type : Date, default: Date.now() }
 });
 
