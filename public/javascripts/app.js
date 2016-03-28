@@ -78,7 +78,6 @@ app.controller('HomeController', HomeController);
 
   function incrementUpvotes (shoe){
     console.log('incrementing');
-    console.log(shoe);
      shoe.upvotes += 1;
      Shoe.update({id: shoe._id}, shoe);
      console.log(shoe.upvotes);
