@@ -42,7 +42,7 @@ app.post('/api/shoes', function (req, res) {
 });
 
 app.get('/api/shoes/:id', function (req, res) {
-// get todo id from url params (`req.params`)
+// get shoe id from url params (`req.params`)
   var shoeId = req.params.id;
 
 
@@ -61,6 +61,7 @@ app.get('/api/shoes/:id', function (req, res) {
 //update Shoe
 app.put('/api/shoes/:id', function (req, res) {
     var id = req.params.id;
+    console.log('hit update route');
     Shoe.findById({_id: id}, function (err, foundShoe){
         if (err) console.log(err);
         foundShoe.brand = req.body.brand;

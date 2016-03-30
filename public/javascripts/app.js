@@ -55,34 +55,43 @@ app.controller('HomeController', HomeController);
 		this.updateShoe = updateShoe;
 		this.deleteShoe = deleteShoe;
 		this.incrementUpvotes = incrementUpvotes;
+    // this.createComment = createComment;
 
 	function updateShoe(shoe) {
-		console.log('updating');
+		console.log('updating3');
 	    Shoe.update({id: shoe._id}, shoe);
 	    this.displayEditForm = false;
   	}
 
+  function incrementUpvotes(shoe){
+      console.log('incrementing');
+      shoe.upvotes += 1;
+      Shoe.update({id: shoe._id}, shoe);
+      // console.log(shoe.upvotes);
+    }
+
 	 function createShoe(){
+	 	console.log('incrementing2');
 	      Shoe.save(this.newShoe);
 	      this.shoes.push(this.newShoe);
 	      this.newShoe = {};
 	      console.log('saved');
 	 }
 
-  function deleteShoe(shoe) {
-  	console.log("deleting", shoe._id);
-    Shoe.remove({id:shoe._id});
-    var shoesIndex = this.shoes.indexOf(shoe);
-    this.shoes.splice(shoesIndex, 1);
-  }
+  	function deleteShoe(shoe) {
+	  	console.log("deleting", shoe._id);
+	    Shoe.remove({id:shoe._id});
+	    var shoesIndex = this.shoes.indexOf(shoe);
+	    this.shoes.splice(shoesIndex, 1);
+  	}
 
-  function incrementUpvotes (shoe){
-    console.log('incrementing');
-     shoe.upvotes += 1;
-     Shoe.update({id: shoe._id}, shoe);
-     console.log(shoe.upvotes);
-  }
+    // function createComment(comment) {
+    //   console.log('creating comment');
+    //   var commentId =  comment._id; 
+    //   Shoe.comments.push(commentId);
+    //   Comment.save(this.newComment);
 
+    // }
 }	
 
 app.service('Shoe', function($resource) {

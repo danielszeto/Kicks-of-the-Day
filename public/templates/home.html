@@ -46,7 +46,7 @@
   </div>
   </div>
 
-  <form class="add-shoe" ng-submit='home.createShoe()'>
+<!--   <form class="add-shoe" ng-submit='home.createShoe()'>
       <div>
         <label for="shoe-brand">Brand:</label>
         <input type="text" id="shoe-brand" ng-model="home.newShoe.brand" placeholder="brand">
@@ -57,29 +57,44 @@
       </div>
       <div>
         <label for="newShoe-image">Image:</label>
-        <input type="text" id="newShoe-image" ng-model="home.newShoe.image" placeholder="image URL">
+        <input type="text" id="newShoe-image" ng-model="home.newShoe.image" placeholder="image URL"> -->
 <!--         <input type="hidden" id="newShoe-image" ng-model="home.newShoe.image" role="uploadcare-uploader" data-crop="disabled" data-images-only="true" />
       </div> -->
  <!--         <div>
         <label for="newTodo-done">Done:</label>
         <input type="text" id="newTodo-done" ng-model="todos.newTodo.done" placeholder="done">
       </div> -->
-      <div>
+   <!--    <div>
         <input type="submit" value="Add Shoe">
-      </div>
-    </form>
+      </div> -->
+   <!--  </form> -->
 
 
   <div class="shoeShow">
      <ul ng-repeat="shoe in home.shoes | orderBy: '-upvotes' ">
+      <!-- <li class ="row"> -->
         <a class="shoeBrand" href="/shoes/{{shoe._id}}">{{shoe.brand}} </a>
         <!-- <div class="shoeBrand"> {{shoe.brand}}</div> -->
         <div class="shoeKind"> {{shoe.kind}} </div>
         <img src="{{shoe.image}}"> <br/><br/>
         <button class="btn btn-default" class='delete' ng-click="home.deleteShoe(shoe)">Delete</button>
-        <span ng-click="home.displayEditForm = true" class="btn btn-default">Edit</span>
+        <button ng-click="home.displayEditForm=true" class="btn btn-default">Edit</button>
         <br><br><br>
-        <button class="glyphicon glyphicon-thumbs-up" ng-click="home.incrementUpvotes(shoe)"></button> <div> {{shoe.upvotes}} </div>
+        <button type="button" class="glyphicon glyphicon-thumbs-up" ng-click="home.incrementUpvotes(shoe)"></button> <div> {{shoe.upvotes}} </div>
+
+    <form class="add-comment" ng-submit='home.createComment()'>
+      <div>
+        <label for="newComment-author">Author:</label>
+        <input type="text" id="newComment-author" ng-model="home.newComment.author" placeholder="author">
+      </div>
+      <div>
+        <label for="comment-body">Body:</label>
+        <input type="text" id="comment-body" ng-model="home.newComment.body" placeholder="body">
+      </div>
+       <input type="submit" value="Add Comment">
+      </div>
+    </form>
+ 
 
         <form ng-show="home.displayEditForm" ng-submit="home.updateShoe(shoe)">
                 <div class="form-group">
@@ -92,8 +107,12 @@
                 <!-- ng-click="home.displayEditForm=false" -->
        </form>
        <hr>
-      </ul>
-      </div>
+      <!-- </li> -->
+    </ul>
+    </div>
+
+
+
 
 
 
