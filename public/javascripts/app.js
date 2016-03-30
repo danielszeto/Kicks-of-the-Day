@@ -88,14 +88,11 @@ app.controller('HomeController', HomeController);
   	}
 
     function createComment(shoe) {
-      console.log(this.shoe);
+      this.newComment.shoeId = shoe._id;
       Comment.save(this.newComment);
       this.comments.push(this.newComment);
       this.newComment = {};
       console.log('saved comment');
-
-      
-
     }
 }	
 

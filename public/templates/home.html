@@ -82,7 +82,7 @@
         <br><br><br>
         <button type="button" class="glyphicon glyphicon-thumbs-up" ng-click="home.incrementUpvotes(shoe)"></button> <div> {{shoe.upvotes}} </div>
 
-    <form class="add-comment" ng-submit='home.createComment()'>
+    <form class="add-comment" ng-submit='home.createComment(shoe)'>
       <div>
         <label for="newComment-author">Author:</label>
         <input type="text" id="newComment-author" ng-model="home.newComment.author" placeholder="author">
