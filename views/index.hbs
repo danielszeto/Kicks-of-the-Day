@@ -19,6 +19,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+ <script src="//cdn.jsdelivr.net/satellizer/0.14.0/satellizer.min.js"></script>
 
 <script>
   UPLOADCARE_LOCALE = "en";
@@ -60,6 +61,10 @@
                     <li>
                         <a ui-sref="contact">Contact</a>
                     </li>
+                    <li ng-show="!main.currentUser()"><a ui-sref="signup">Sign Up</a></li>
+                    <li ng-show="!main.currentUser()"><a ui-sref="login">Log In</a></li>
+                    <li ng-show="main.currentUser()"><a ui-sref="profile">\{{main.currentUser().displayName}}</a></li>
+                    <li ng-show="main.currentUser()"><a ui-sref="logout">Log Out</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
