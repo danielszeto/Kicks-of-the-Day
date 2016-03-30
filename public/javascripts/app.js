@@ -48,14 +48,16 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
 app.controller('HomeController', HomeController);
 
-	function HomeController(Shoe, $scope) {
+	function HomeController(Shoe, Comment, $scope) {
 		this.newShoe = {};
-		this.shoes = Shoe.query();
-		this.createShoe = createShoe;
-		this.updateShoe = updateShoe;
-		this.deleteShoe = deleteShoe;
-		this.incrementUpvotes = incrementUpvotes;
-    // this.createComment = createComment;
+    this.shoes = Shoe.query();
+    this.createShoe = createShoe;
+    this.updateShoe = updateShoe;
+    this.deleteShoe = deleteShoe;
+    this.incrementUpvotes = incrementUpvotes;
+    this.newComment ={};
+    this.comments = Comment.query();
+    this.createComment = createComment;
 
 	function updateShoe(shoe) {
 		console.log('updating3');
@@ -85,17 +87,28 @@ app.controller('HomeController', HomeController);
 	    this.shoes.splice(shoesIndex, 1);
   	}
 
-    // function createComment(comment) {
-    //   console.log('creating comment');
-    //   var commentId =  comment._id; 
-    //   Shoe.comments.push(commentId);
-    //   Comment.save(this.newComment);
+    function createComment(shoe) {
+      console.log(this.shoe);
+      Comment.save(this.newComment);
+      this.comments.push(this.newComment);
+      this.newComment = {};
+      console.log('saved comment');
 
-    // }
+      
+
+    }
 }	
 
 app.service('Shoe', function($resource) {
   return $resource('http://localhost:3000/api/shoes/:id', { id: '@_id' }, {
+    update: {
+      method: 'PUT' // this method issues a PUT request
+    }
+  });
+});
+
+app.service('Comment', function($resource) {
+  return $resource('http://localhost:3000/api/comments/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }

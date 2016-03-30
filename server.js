@@ -79,10 +79,74 @@ app.delete('/api/shoes/:id', function (req, res) {
 	Shoe.remove({_id:id}, function (err) {
 		if (err)
 		console.log(err);
+  });
+});
 
-	});
+//comments
+app.get('/api/comments', function (req, res) {
+    Comment.find(function (err, allComments) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(allComments);
+    }
+  });
+});
+
+app.post('/api/comments', function (req, res) {
+    var newComment = new Comment(req.body);
+  newComment.save(function (err, savedComment) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(savedComment);
+    }
+  });
+});
+
+app.get('/api/comments/:id', function (req, res) {
+// get shoe id from url params (`req.params`)
+  var commentId = req.params.id;
+
+
+  // find shoe in db by id
+  Comment.findOne({ _id: shoeId }, function (err, foundComment) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.json(foundComment);
+    }
+  });
+
 
 });
+
+//update Shoe
+app.put('/api/comments/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('hit update route');
+    Comment.findById({_id: id}, function (err, foundShoe){
+        if (err) console.log(err);
+        foundComment.author = req.body.author;
+        foundComment.body = req.body.body;
+        foundComment.upvotes = req.body.upvotes;
+        foundComment.save(function (err, saved){
+            if (err) { console.log(err);}
+            res.json(saved);
+        });
+    });
+});
+
+app.delete('/api/comments/:id', function (req, res) {
+  var id = req.params.id;
+  Comment.remove({_id:id}, function (err) {
+    if (err)
+    console.log(err);
+
+  });
+
+});
+
 app.get('*', function (req, res) {
   res.render('index');
 });
