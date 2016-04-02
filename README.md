@@ -19,7 +19,7 @@
 #Instructions
 * fork repo
 * git clone
-* *npm install
+* npm install
 
 
 # How to Contribute
