@@ -6,9 +6,6 @@
 * Users can upvote the best looking kicks of the day. 
 * Who's kicks will reign supreme?
 
-
-# Planning
-
 # Techonologies
 * Javascript
 * Node.js
@@ -17,6 +14,12 @@
 * HTML
 * CSS
 * Bootstrap
+* 
+
+#Instructions
+* fork repo
+* git clone
+* npm install
 
 
 # How to Contribute
