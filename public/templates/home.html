@@ -98,7 +98,7 @@
       <ul ng-repeat="comment in home.comments | filter:{shoeId: shoe._id }">
         <div class="shoeComments"> {{comment.body}} </div>
       </ul>
-    </ul>
+  </ul>
  
 
         <form ng-show="home.displayEditForm" ng-submit="home.updateShoe(shoe)">
