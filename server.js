@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/kicksoftheday');
+mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/kicksoftheday');
 
 app.get('/api/shoes', function (req, res) {
     Shoe.find(function (err, allShoes) {
