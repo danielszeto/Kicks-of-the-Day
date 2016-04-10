@@ -4,8 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Shoe = require('./models/shoe'),
-    Comment = require('./models/comments'),
-    User = require('./models/user');
+    Comment = require('./models/comments');
 
 // configure bodyParser (for receiving form data)
 app.use(bodyParser.urlencoded({ extended: true }));
