@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Shoe = require('./models/shoe'),
-    Comment = require('./models/Comments'),
+    Comment = require('./models/comments'),
     User = require('./models/user');
 
 // configure bodyParser (for receiving form data)
