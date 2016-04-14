@@ -14,7 +14,6 @@
 * HTML
 * CSS
 * Bootstrap
-* 
 
 #Instructions
 * fork repo
